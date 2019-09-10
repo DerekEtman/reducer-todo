@@ -16,14 +16,29 @@ export const ToDoLine = () => {
 
     return(
         <>
-            <h3>{toDoState.toDo}</h3>
-            
-            {!state.editing ? (
+            <div className="todo-add-wrapper">
+                <input className="todo-add-input" type="text" name="newToDo" value={newToDo} onChange={handleChanges}/>
+                <button className="todo-add" onClick={() => dispatch({ type: "TODO_ADD"})}>Add ToDo</button>
+            </div>
+        </>
+    );
+};
+
+
+
+
+
+// editing TODO
+
+            {/* {!state.editing ? (
                 <>
-                    <input 
-                        className= "todo-edit"
-                        onClick={() => dispatch({ type: "TOGGLE_EDITING"})}
-                    />
+                    <h2>
+                        {state.item}
+                        <i
+                            className= "todo-edit"
+                            onClick={() => dispatch({ type: "TOGGLE_EDITING"})}
+                        />
+                    </h2>
                 </>
             ) : (
                 <>
@@ -34,7 +49,4 @@ export const ToDoLine = () => {
                     </button>
 
                 </>
-            )}
-        </>
-    );
-};
+            )} */}

@@ -16,7 +16,7 @@ export const ToDoTitle = () => {
 
     return(
         <>
-        <h1>ToDo Title.</h1>
+        <h1>To.Do.</h1>
         </>
     )
 }
