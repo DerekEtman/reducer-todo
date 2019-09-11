@@ -13,21 +13,25 @@ import { ToDoList } from './components/ToDoList';
 
 
 function App() {
-  const[toDoItem, setToDoItem] = useState();
+  // const[toDoItem, setToDoItem] = useState();
 
   const [state, dispatch]  = useReducer(toDoReducer, toDoState);
+
+  // console.log("State: ", state)
+  // console.log("dispatch: ", dispatch)
   
-  const addTodo = (item) =>dispatch({type:"ADD_TODO", input: item})
+  const addTodo = (item) => dispatch({type:"ADD_TODO", input: item})
   
-  console.log("TodoState: ", toDoState.data)
+  console.log("TodoState: ", toDoState);
+  console.log("state.data: ", state.data);
 
   return (
     <div className="App">
       <header className="App-header">
 
         <ToDoTitle />
-        <ToDoLine addTodo={addTodo}/>
-        <ToDoList data={toDoState.data}/>
+        <ToDoLine add={addTodo}/>
+        <ToDoList data={state.data}/>
 
       </header>
     </div>

@@ -7,9 +7,9 @@ export const ToDo = (props) => {
     // console.log("ToDo Destructure Title: ", props.item.item);
 
     return(
-        <>
-        <p>{props.data.item}</p>
+        <ul className="todo-list">
+        <li>{props.data.item}</li>
         {/* <p>{props.item.completed}</p> */}
-        </>
+        </ul>
     )
 }

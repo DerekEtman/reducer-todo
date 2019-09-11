@@ -9,6 +9,11 @@ export const toDoState = {
     item: "Remeber how to use reducers",
     completed: false,
     id:133337
+    },
+    {
+    item: "learn how to add to reducer state",
+    completed: false,
+    id:245678
     }]
 };
 
@@ -18,14 +23,16 @@ export const toDoReducer = (state, action) => {
      case "ADD_TODO":
          return {
              ...state,
+             data: [...state.data,{
              item: action.input,
              complete:false,
-             id: Date.now()
+             id: Date.now()}
+            ]
             };
-    //  case "TOGGLE_ITEM":
-    //       return{
-    //           console.log
-    //       }
+     case "REMOVE_ALL":
+        return{
+            ...state
+        };
      case "UPDATE_TODO":
          return {
              ...state,

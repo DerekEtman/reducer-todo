@@ -5,22 +5,46 @@ import { toDoReducer, toDoState } from '../reducers/defaultReducer';
 
 
 export const ToDoLine = () => {
+    // console.log("dispatch.add ", dispatch.add);
     const [newToDo, setNewToDo] = useState();
+    const [state, dispatch]  = useReducer(toDoReducer, toDoState);
 
-    const [state, dispatch] = useReducer(toDoReducer, toDoState);
-    console.log("ToDoLine State: ", state);
+    console.log("ToDoLine State: ", newToDo);
 
     const handleChanges = e => {
         setNewToDo(e.target.value);
     };
+    // console.log("handelChanges: ", handleChanges)
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        dispatch({type:"ADD_TODO", payload:{newToDo}});
+    }
 
     return(
-        <>
-            <div className="todo-add-wrapper">
-                <input className="todo-add-input" type="text" name="newToDo" value={newToDo} onChange={handleChanges}/>
-                <button className="todo-add" onClick={() => dispatch({ type: "TODO_ADD"})}>Add ToDo</button>
-            </div>
-        </>
+    <>
+        <div className="todo-add-wrapper">
+            <form onSubmit={handleSubmit}>
+            <input 
+            className="todo-add-input" type="text" 
+            name="newToDo" 
+            value={newToDo} onChange={handleChanges}/>
+
+            <button 
+            className="todo-add" 
+            onClick={handleSubmit}>
+                +
+            </button>
+
+            <button 
+            className="todo-clear"
+            onClick={() => dispatch({type:"REMOVE_ALL"})}
+            >
+            Remove All
+            </button>
+            </form>
+        </div>
+    </>
     );
 };
 
