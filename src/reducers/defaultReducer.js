@@ -17,8 +17,10 @@ export const toDoState = {
     }]
 };
 
+console.log("TodoState in reducer: ", toDoState.data)
+
 export const toDoReducer = (state, action) => {
-    console.log("toDoReducer state: ", state)
+    console.log("toDoReducer state: ", state.data)
     // console.log("toDoReducer action: ", action)
 
  switch(action.type) {
@@ -38,8 +40,20 @@ export const toDoReducer = (state, action) => {
 
         };
      case "TOGGLE_TODO":
-         return state.data.map(item => item.id === action.id ? {...item, completed:!item.completed} : item
-            );
+            return {
+                ...state, 
+                data: state.data.map(toggleData => {
+                    if (toggleData.id === action.input) {
+                        return ({
+                            ...toggleData, 
+                            completed: !toggleData.completed
+                        }
+                        )
+                    } else {
+                      return toggleData
+                    }
+                })
+              };
      case "UPDATE_TODO":
          return {
              ...state,

@@ -20,20 +20,20 @@ function App() {
   // console.log("State: ", state)
   // console.log("dispatch: ", dispatch)
   
-  const addTodo = (item) => dispatch({type:"ADD_TODO", input: item})
+  // const addTodo = (item) => dispatch({type:"ADD_TODO", input: item})
 
   const toggleTodo = (item) => dispatch({type:"TOGGLE_TODO", input: item})
   
   // console.log("TodoState: ", toDoState);
-  console.log("state.data: ", state.data);
+  console.log("toDoState.data: ", toDoState.data);
 
   return (
     <div className="App">
       <header className="App-header">
 
         <ToDoTitle />
-        <ToDoLine add={addTodo}/>
-        <ToDoList data={state.data} toggle={toggleTodo}/>
+        <ToDoLine />
+        <ToDoList data={toDoState.data} toggle={toggleTodo}/>
 
       </header>
     </div>

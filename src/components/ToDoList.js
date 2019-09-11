@@ -13,7 +13,8 @@ export const ToDoList = () => {
     
     const [state, dispatch]  = useReducer(toDoReducer, toDoState);
 
-    console.log("toDoList state: ", state);
+    const initialState = state.data;
+    console.log("initialState: ", initialState);
     // console.log("toDoList toggle: ", toggle);
 
     

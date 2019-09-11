@@ -4,7 +4,7 @@ import React, { useState, useReducer } from 'react';
 import { toDoReducer, toDoState } from '../reducers/defaultReducer';
 
 
-export const ToDoLine = (add) => {
+export const ToDoLine = () => {
     const [newToDo, setNewToDo] = useState();
     const [state, dispatch]  = useReducer(toDoReducer, toDoState);
     
