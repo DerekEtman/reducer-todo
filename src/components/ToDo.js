@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useReducer} from 'react';
+
+// reducers
+import { toDoReducer, toDoState } from '../reducers/defaultReducer';
 
 
 export const ToDo = (props) => {
 
-    // const {title, completed, id} = props.item.item;
-    // console.log("ToDo Destructure Title: ", props.item.item);
+    const [state, dispatch]  = useReducer(toDoReducer, toDoState);
 
     return(
-        <ul className="todo-list">
-        <li>{props.data.item}</li>
-        {/* <p>{props.item.completed}</p> */}
-        </ul>
+        <div className="todo-list">
+                <li>{props.data.item} <input type="checkbox" onClick={() => dispatch({type:"TOGGLE_TODO", input: props.data.id})} /></li>
+        </div>
     )
 }

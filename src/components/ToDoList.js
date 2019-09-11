@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useReducer } from 'react';
+
 // Components
 import { ToDo } from '../components/ToDo.js';
 
-export const ToDoList = (Arr) => {
-    console.log(Arr);
-    const toDoArr = Arr.data;
+// reducers
+import { toDoReducer, toDoState } from '../reducers/defaultReducer';
 
+
+export const ToDoList = () => {
+    // console.log("ToDoList: ", arr)
+    // console.log("ToDoList arr.data: ", arr.data);
+    
+    const [state, dispatch]  = useReducer(toDoReducer, toDoState);
+
+    console.log("toDoList state: ", state);
+    // console.log("toDoList toggle: ", toggle);
+
+    
     return(
         <>
-            {toDoArr.map(arrData => (
+            {state.data.map(arrData => (
                 <ToDo 
                 key={arrData.id}
                 data={arrData}

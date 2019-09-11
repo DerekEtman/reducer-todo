@@ -21,8 +21,10 @@ function App() {
   // console.log("dispatch: ", dispatch)
   
   const addTodo = (item) => dispatch({type:"ADD_TODO", input: item})
+
+  const toggleTodo = (item) => dispatch({type:"TOGGLE_TODO", input: item})
   
-  console.log("TodoState: ", toDoState);
+  // console.log("TodoState: ", toDoState);
   console.log("state.data: ", state.data);
 
   return (
@@ -31,7 +33,7 @@ function App() {
 
         <ToDoTitle />
         <ToDoLine add={addTodo}/>
-        <ToDoList data={state.data}/>
+        <ToDoList data={state.data} toggle={toggleTodo}/>
 
       </header>
     </div>

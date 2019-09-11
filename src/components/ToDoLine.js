@@ -4,22 +4,21 @@ import React, { useState, useReducer } from 'react';
 import { toDoReducer, toDoState } from '../reducers/defaultReducer';
 
 
-export const ToDoLine = () => {
-    // console.log("dispatch.add ", dispatch.add);
+export const ToDoLine = (add) => {
     const [newToDo, setNewToDo] = useState();
     const [state, dispatch]  = useReducer(toDoReducer, toDoState);
-
-    console.log("ToDoLine State: ", newToDo);
+    
+    // console.log("ToDoLine State: ", state);
 
     const handleChanges = e => {
         setNewToDo(e.target.value);
     };
-    // console.log("handelChanges: ", handleChanges)
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch({type:"ADD_TODO", payload:{newToDo}});
+        dispatch({type:"ADD_TODO", input:newToDo});
     }
+
 
     return(
     <>
